@@ -1,7 +1,7 @@
-import React from "react";
 import { useLocation } from "react-router-dom";
 import { brainwaveSymbol } from "../assets";
 import { navItems } from "../constants";
+import Button from "./Button";
 const Header = () => {
   const path = useLocation();
 
@@ -18,7 +18,7 @@ const Header = () => {
           </div>
         </a>
         <nav
-          className="fixed top-[5rem] bottom-0 left-0 right-0 bg-n-8 lg:static
+          className=" hidden fixed top-[5rem] bottom-0 left-0 right-0 bg-n-8 lg:static
         lg:flex lg:mx-auto lg:bg-transparent"
         >
           <div
@@ -33,7 +33,7 @@ const Header = () => {
                 } px-6 py-6 lg:py-8 lg:text-xs lg:font-semibold
                 ${path.hash === nav.url ? "z-2 text-n-1" : "text-n-1/50"}
                 lg:leading-5 lg:hover:text-n-1 xl:px-12`}
-                id={nav.id}
+                key={nav.id}
                 href={nav.url}
               >
                 {nav.title}
@@ -47,6 +47,9 @@ const Header = () => {
         >
           New Account
         </a>
+        <Button className="hidden lg:flex" href="#login">
+          Sign in
+        </Button>
       </div>
     </div>
   );
