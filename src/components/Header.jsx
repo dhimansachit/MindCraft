@@ -1,23 +1,29 @@
 import { useLocation } from "react-router-dom";
-import { brainwaveSymbol } from "../assets";
+import { mindcraftSymbol } from "../assets";
 import { navItems } from "../constants";
 import Button from "./Button";
 import { HambugerMenu } from "./design/Header";
+import { disablePageScroll, enablePageScroll } from "scroll-lock";
 import { useState } from "react";
 import MenuSvg from "../assets/svg/MenuSvg";
 const Header = () => {
   const path = useLocation();
 
-  const [isNavigationOpen, setIsNavigationOpen] = useState(true);
+  const [isNavigationOpen, setIsNavigationOpen] = useState(false);
 
   const toggle = () => {
     if (isNavigationOpen) {
       setIsNavigationOpen(false);
+      enablePageScroll();
     } else {
       setIsNavigationOpen(true);
+      disablePageScroll();
     }
   };
   const handleClick = () => {
+    if (!isNavigationOpen) return;
+
+    enablePageScroll();
     setIsNavigationOpen(false);
   };
   return (
@@ -28,7 +34,7 @@ const Header = () => {
     >
       <div className="flex items-center px-5 lg:px-7.5 xl:px-10 max-lg:py-3">
         <a className="inline-flex items-center w-[12rem] xl:mr-8" href="#hero">
-          <img src={brainwaveSymbol}></img>
+          <img src={mindcraftSymbol}></img>
           <div className="px-2 text-2xl">
             <strong>MindCraft</strong>
           </div>
