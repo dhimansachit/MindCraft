@@ -1,4 +1,4 @@
-import ButtonSvg from "../assets/svg/ButtonSvg";
+import ButtonSvg from "./svg/ButtonSvg";
 const Button = ({ href, children, px = null, className, onClick, isWhite }) => {
   const classes = `button relative inline-flex items-center justify-center h-11 ${
     isWhite ? "text-n-8" : "text-n-1"
