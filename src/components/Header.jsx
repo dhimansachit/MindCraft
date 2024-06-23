@@ -2,27 +2,45 @@ import { useLocation } from "react-router-dom";
 import { brainwaveSymbol } from "../assets";
 import { navItems } from "../constants";
 import Button from "./Button";
+import { HambugerMenu } from "./design/Header";
+import { useState } from "react";
+import MenuSvg from "../assets/svg/MenuSvg";
 const Header = () => {
   const path = useLocation();
 
+  const [isNavigationOpen, setIsNavigationOpen] = useState(true);
+
+  const toggle = () => {
+    if (isNavigationOpen) {
+      setIsNavigationOpen(false);
+    } else {
+      setIsNavigationOpen(true);
+    }
+  };
+  const handleClick = () => {
+    setIsNavigationOpen(false);
+  };
   return (
-    <div className="fixed top-0 left-0 w-full z-50 border-n-6 background-blur-sm bg-n-8/90 border-b lg:bg-n-8/90 lg:backdrop-blur-sm">
-      <div className="flex justify-center items-center px-5 lg:px-7.5 xl:px-10 max-lg:py-4">
-        <a
-          className="inline-flex items-center p-3 w-[12rem] xl:mr-8"
-          href="#hero"
-        >
+    <div
+      className={`${
+        isNavigationOpen ? "bg-n-8" : "bg-n-8/90 backdrop-blur-sm"
+      } fixed top-0 left-0 w-full z-50 border-n-6  border-b lg:bg-n-8/90 lg:backdrop-blur-sm`}
+    >
+      <div className="flex items-center px-5 lg:px-7.5 xl:px-10 max-lg:py-3">
+        <a className="inline-flex items-center w-[12rem] xl:mr-8" href="#hero">
           <img src={brainwaveSymbol}></img>
           <div className="px-2 text-2xl">
             <strong>MindCraft</strong>
           </div>
         </a>
         <nav
-          className=" hidden fixed top-[5rem] bottom-0 left-0 right-0 bg-n-8 lg:static
-        lg:flex lg:mx-auto lg:bg-transparent"
+          className={`${
+            isNavigationOpen ? "flex" : "hidden"
+          } fixed top-[5rem] bottom-0 left-0 right-0 bg-n-8 lg:static
+          lg:flex lg:mx-auto lg:bg-transparent`}
         >
           <div
-            className="relative z-2 flex flex-col items-center justify-center mx-auto
+            className="relative flex flex-col items-center justify-center mx-auto
           lg:flex-row"
           >
             {navItems.map((nav) => (
@@ -30,16 +48,18 @@ const Header = () => {
                 className={`block relative font-code text-2xl uppercase text-n-1 transition-colors hover:text-color-1
                 ${
                   nav.onlyMobile ? "lg:hidden" : ""
-                } px-6 py-6 lg:py-8 lg:text-xs lg:font-semibold
+                } px-6 py-6 lg:py-7 xl:py-8 lg:text-xs lg:font-semibold
                 ${path.hash === nav.url ? "z-2 text-n-1" : "text-n-1/50"}
                 lg:leading-5 lg:hover:text-n-1 xl:px-12`}
                 key={nav.id}
                 href={nav.url}
+                onClick={handleClick}
               >
                 {nav.title}
               </a>
             ))}
           </div>
+          <HambugerMenu />
         </nav>
         <a
           href="#signup"
@@ -49,6 +69,10 @@ const Header = () => {
         </a>
         <Button className="hidden lg:flex" href="#login">
           Sign in
+        </Button>
+
+        <Button className="ml-auto lg:hidden" onClick={toggle} px="px-3">
+          <MenuSvg openNavigation={isNavigationOpen} />
         </Button>
       </div>
     </div>

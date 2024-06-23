@@ -1,4 +1,5 @@
 import brainwave from "./brainwave.svg";
 import brainwaveSymbol from "./brainwave-symbol.svg";
+import background from "./background.jpg";
 
-export { brainwave, brainwaveSymbol };
+export { background, brainwave, brainwaveSymbol };
