@@ -22,7 +22,6 @@ export const benefits = [
     backgroundUrl: "./src/assets/benefits/card-2.svg",
     iconUrl: benefitIcon2,
     imageUrl: benefitImage2,
-    light: true,
   },
   {
     id: "2",
@@ -31,6 +30,7 @@ export const benefits = [
     backgroundUrl: "./src/assets/benefits/card-3.svg",
     iconUrl: benefitIcon3,
     imageUrl: benefitImage2,
+    light: true,
   },
   {
     id: "3",
@@ -39,7 +39,6 @@ export const benefits = [
     backgroundUrl: "./src/assets/benefits/card-4.svg",
     iconUrl: benefitIcon4,
     imageUrl: benefitImage2,
-    light: true,
   },
   {
     id: "4",
@@ -48,6 +47,7 @@ export const benefits = [
     backgroundUrl: "./src/assets/benefits/card-5.svg",
     iconUrl: benefitIcon1,
     imageUrl: benefitImage2,
+    light: true,
   },
   {
     id: "5",
