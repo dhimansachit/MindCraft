@@ -5,6 +5,7 @@
   "type": "module",
   "homepage": "https://dhimansachit.github.io/MindCraft",
   "scripts": {
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
     "dev": "vite",
     "build": "vite build",
